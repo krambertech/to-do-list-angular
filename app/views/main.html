@@ -1,0 +1,36 @@
+<div class="container">
+
+  <div ng-model="todos" class="list-group">
+    <div  class="list-group-item todo-item" ng-repeat="todo in todos | orderBy: 'priority' " ng-show="!todo.isDone">
+      <div class="todo-body" >
+        <h4 class="list-group-item-heading">{{todo.name}} <span class="badge"><span class="glyphicon glyphicon-star"> </span>  PRI {{todo.priority}}</span></h4>
+        <p class="list-group-item-text">{{todo.description}}  {{todo.isDone}}</p>
+      </div>
+      
+      <div class="todo-check hvr-bubble-left" ng-click="delTodo($index)"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></div>
+    </div>
+  
+
+ <form role="form" ng-submit="addTodo()" class="list-group-item">
+    <div class="form-group">
+      <input type="text" class="form-control" id="inputTodoName" placeholder="What needs to be done" ng-model="todo.name">
+    </div>
+    <div class="form-group">
+      <textarea class="form-control" rows="3" ng-model="todo.description" placeholder="Describe it further"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="priorityRadioOptions">Choose priority</label>
+      <label class="radio-inline">
+        <input type="radio" name="priorityRadioOptions" id="priority1" value="1" ng-model="todo.priority"> 1
+      </label>
+      <label class="radio-inline">
+        <input type="radio" name="priorityRadioOptions" id="priority2" value="2" ng-model="todo.priority"> 2
+      </label>
+      <label class="radio-inline">
+        <input type="radio" name="priorityRadioOptions" id="priority3" value="3" ng-model="todo.priority"> 3
+      </label>
+    </div>
+    <input type="submit" class="btn btn-success" value="Add">
+  </form>
+</div>
+</div>
